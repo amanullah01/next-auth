@@ -3,10 +3,20 @@ import { connectToDatabase } from "@/lib/db";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-export default NextAuth({
+export const authOptions = {
   session: {
     strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60,
+    updateAge: 24 * 60 * 60,
+    generateSessionToken: () => {
+      return randomUUID?.() ?? randomBytes(32).toString("hex");
+    },
   },
+  // jwt: {
+  //   maxAge: 60 * 60 * 24 * 30,
+  //   async encode() {},
+  //   async decode() {},
+  // },
   providers: [
     CredentialsProvider({
       credentials: {},
@@ -38,4 +48,6 @@ export default NextAuth({
       },
     }),
   ],
-});
+};
+
+export default NextAuth(authOptions);
