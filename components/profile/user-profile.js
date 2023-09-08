@@ -1,8 +1,7 @@
-import { getSession, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import ProfileForm from "./profile-form";
 import classes from "./user-profile.module.css";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 
 function UserProfile() {
   const router = useRouter();

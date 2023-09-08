@@ -33,9 +33,8 @@ export default NextAuth({
           throw new Error("Could not log you in!");
         }
 
-        return { email: user.email };
-
         client.close();
+        return { email: user.email };
       },
     }),
   ],
