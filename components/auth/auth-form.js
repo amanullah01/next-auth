@@ -44,10 +44,9 @@ function AuthForm() {
         password: enteredPasword,
       });
 
-      if (!result.ok) {
+      if (!result.error) {
+        router.replace("/profile");
       }
-
-      router.push("/profile");
 
       // console.log(result);
     } else {
