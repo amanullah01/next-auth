@@ -7,8 +7,6 @@ import { useRouter } from "next/router";
 function MainNavigation() {
   const router = useRouter();
   const { data: session, status } = useSession();
-  console.log(status);
-  console.log(session);
 
   const logoutHandler = async () => {
     const data = await signOut({ redirect: false, callbackUrl: "/auth" });
